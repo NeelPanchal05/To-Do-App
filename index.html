@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="todo-container">
+      <!-- Dark/Light Mode Toggle -->
+      <div id="theme-toggle-container">
+        <button id="theme-toggle" title="Toggle Dark/Light Mode">🌙</button>
+      </div>
+
+      <div id="header">
+        <h1>To Do List</h1>
+        <!-- Task Count Badges -->
+        <div id="header-badges">
+          <span class="badge badge-total"
+            >Total: <span id="total-counter">0</span></span
+          >
+          <span class="badge badge-completed"
+            >Done: <span id="header-completed-counter">0</span></span
+          >
+          <span class="badge badge-uncompleted"
+            >Pending: <span id="header-uncompleted-counter">0</span></span
+          >
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div id="progress-bar-container">
+        <div id="progress-bar">
+          <div id="progress-fill"></div>
+        </div>
+        <p id="progress-text">0% Complete</p>
+      </div>
+
+      <!-- Search Bar -->
+      <div id="search-bar">
+        <input type="text" id="search-input" placeholder="Search tasks..." />
+        <select id="category-filter">
+          <option value="all">All Categories</option>
+          <option value="none">No Category</option>
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="shopping">Shopping</option>
+          <option value="health">Health</option>
+          <option value="finance">Finance</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <!-- Task Form with Priority and Due Date -->
+      <div id="todo-form">
+        <input
+          type="text"
+          class="input-item"
+          name="input_box"
+          id="input-box"
+          placeholder="Add Task"
+        />
+
+        <select id="priority-select" title="Priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+
+        <select id="category-select" title="Category">
+          <option value="none" selected>No Category</option>
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="shopping">Shopping</option>
+          <option value="health">Health</option>
+          <option value="finance">Finance</option>
+          <option value="other">Other</option>
+        </select>
+
+        <input type="date" id="due-date-input" title="Due Date" />
+
+        <input
+          type="text"
+          id="tags-input"
+          placeholder="Tags (comma-separated)"
+        />
+
+        <button id="input-button">Add</button>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div id="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+        <button class="filter-btn" data-filter="uncompleted">
+          Uncompleted
+        </button>
+        <button id="clear-all-btn">Clear All</button>
+      </div>
+
+      <h2>Task List</h2>
+
+      <!-- Empty State Message -->
+      <div id="empty-state" class="empty-state">
+        <p>📝 No tasks yet! Add one to get started.</p>
+      </div>
+
+      <ul id="list-container" draggable="false"></ul>
+
+      <hr />
+
+      <div class="counter-container">
+        <div id="task-counters">
+          Completed: <span id="completed-counter">0</span> | Uncompleted:
+          <span id="uncompleted-counter">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Modal for Editing Tasks -->
+    <div id="edit-modal" class="modal-overlay">
+      <div class="modal-content">
+        <h3>Edit Task</h3>
+        <input type="text" id="edit-input" placeholder="Edit task..." />
+        <div class="modal-buttons">
+          <button id="edit-cancel-btn" class="modal-btn secondary-btn">Cancel</button>
+          <button id="edit-save-btn" class="modal-btn primary-btn">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Modal for Confirmation Dialogs (Delete/Clear) -->
+    <div id="confirm-modal" class="modal-overlay">
+      <div class="modal-content">
+        <h3 id="confirm-title">Are you sure?</h3>
+        <p id="confirm-message">This action cannot be undone.</p>
+        <div class="modal-buttons">
+          <button id="confirm-cancel-btn" class="modal-btn secondary-btn">Cancel</button>
+          <button id="confirm-ok-btn" class="modal-btn danger-btn">Confirm</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
